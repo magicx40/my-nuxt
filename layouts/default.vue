@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+const router = useRouter();
 const menu = ref([
     {
         label: '首页',
@@ -27,6 +28,10 @@ const handleOpen = (key: string, keyPath: string[]) => {
 const handleClose = (key: string, keyPath: string[]) => {
     console.log(key, keyPath)
 }
+
+const handleLoginClick = () => {
+    router.push('/login');
+};
 </script>
 
 <template>
@@ -36,7 +41,7 @@ const handleClose = (key: string, keyPath: string[]) => {
                 <div class="flex justify-center items-center h-12 grow-0 shrink-0">
                     <NuxtLink to="/">
                         <h1 class="hidden">布吉岛-桌游社</h1>
-                        <img class="h-8" src="/logo.png" />
+                        <img class="h-8" src="/buji-logo.png" />
                     </NuxtLink>
                 </div>
                 <el-menu :default-active="$route.path" router @open="handleOpen" @close="handleClose">
@@ -49,7 +54,7 @@ const handleClose = (key: string, keyPath: string[]) => {
             <el-container>
                 <el-header>
                     <div class="default-header-wrapper">
-                        <el-button type="primary" round>登录布吉岛</el-button>
+                        <el-button color="#626AEF" round @click="handleLoginClick">登录布吉岛</el-button>
                     </div>
                 </el-header>
                 <el-main>
@@ -104,6 +109,9 @@ const handleClose = (key: string, keyPath: string[]) => {
                     display: flex;
                     justify-content: flex-end;
                     align-items: center;
+                    button {
+                        color: #FFFFFF;
+                    }
                 }
             }
         }
