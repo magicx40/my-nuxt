@@ -19,9 +19,9 @@ const checkEmail = (_rule: any, value: any, callback: any) => {
 
 const validateUser = (_rule: any, value: any, callback: any) => {
     if (!value) {
-        callback(new Error('用输入用户名'))
-    } else if (value && !/^[A-Za-z\u4e00-\u9fa5]{1,12}$/.test(value)) {
-        callback(new Error('请检查用户名格式：连续的中英文字符，最大12个字符'))
+        callback(new Error('请输入用户名'))
+    } else if (value && !/^[0-9A-Za-z\u4e00-\u9fa5]{1,12}$/.test(value)) {
+        callback(new Error('请检查用户名格式：连续的中、英文、数字，最大12个字符'))
     };
     callback()
 }
@@ -50,7 +50,6 @@ const rules = reactive<FormRules<typeof ruleForm>>({
 const submitForm = (formEl: FormInstance | undefined) => {
     if (!formEl) return
     formEl.validate((valid) => {
-        console.log(valid);
         if (valid) {
             console.log('submit!')
         } else {
